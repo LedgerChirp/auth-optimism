@@ -1,93 +1,96 @@
-# Optimism Auth Library
+# Optimism Authentication Library
 
-## Overview
+This library provides a simple React component for integrating Optimism Ethereum authentication using the Optimism protocol and the MetaMask wallet.
 
-`my-auth-library` is a React component library that provides a simple authentication button for integration with the Optimism protocol.
+## Installation
 
-## Getting Started
-
-To use this library in your React project, follow these steps:
-
-### Installation
-
-Install the library using npm:
+Install the library in your React project:
 
 ```bash
-npm install my-auth-library
+npm install optimism-auth-library
 ```
 
-### Usage
+## Usage
 
-1. Import the component in your React application:
+### Import the `Authentication` component:
 
-   ```jsx
-   import React from 'react';
-   import MyAuthComponent from 'my-auth-library';
+```javascript
+import React from 'react';
+import { Authentication } from 'optimism-auth-library';
+import { YourAuthContextProvider } from '../context/AuthContext'; // Replace with your actual AuthContextProvider
+// ...
 
-   function App() {
-     return (
-       <div>
-         <MyAuthComponent />
-       </div>
-     );
-   }
+const App = () => {
+  return (
+    <YourAuthContextProvider> {/* Replace with your actual AuthContextProvider */}
+      {/* ... */}
+      <Authentication />
+      {/* ... */}
+    </YourAuthContextProvider>
+  );
+};
 
-   export default App;
-   ```
+export default App;
+```
 
-2. Customize the component with your own parameters:
+### Customization
 
-   ```jsx
-   <MyAuthComponent
-     label="Connect with Optimism"
-     onSuccess={handleAuthenticationSuccess}
-     onFailure={handleAuthenticationFailure}
-   />
-   ```
+The `Authentication` component can be customized by passing additional props:
 
-### Parameters
+```javascript
+<Authentication buttonText="Connect with Optimism" />
+```
 
-- **`label` (optional):** The text to be displayed on the authentication button. Default is "Auth With Optimism".
-- **`onSuccess` (optional):** Callback function to be executed on successful authentication.
-- **`onFailure` (optional):** Callback function to be executed on authentication failure.
+### Auth Context
 
-## Development
+Make sure you have an authentication context provider (`YourAuthContextProvider` in the example above) that includes the necessary Ethereum provider and authentication state.
 
-If you want to contribute or modify the library, follow these steps:
+## Functionality
 
-1. Clone the repository:
+The `Authentication` component handles:
 
-   ```bash
-   git clone https://github.com/your-username/my-auth-library.git
-   cd my-auth-library
-   ```
+- Connecting to MetaMask and requesting account access.
+- Retrieving account balance and displaying it.
+- Handling account changes and updating the UI accordingly.
+- Logging out and clearing authentication details.
 
-2. Install dependencies:
+## Styling
 
-   ```bash
-   npm install
-   ```
+The component comes with default styling, but you can customize it by providing your own styles.
 
-3. Make your changes to the component in the `src` directory.
+### Connected State:
 
-4. Build the library:
+```jsx
+<div>
+  <label>{/* Display balance here */}</label>
+  <button className="account-button" onClick={/* Connect handler */}>
+    {/* Display account details here */}
+  </button>
+  <button className="account-button" onClick={/* Logout handler */}>
+    Logout
+  </button>
+</div>
+```
 
-   ```bash
-   npm run build
-   ```
+### Disconnected State:
 
-5. Publish the changes:
+```jsx
+<button
+  type="button"
+  onClick={/* Connect handler */}
+  className="rounded-full bg-indigo-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+>
+  Auth With Optimism
+</button>
+```
 
-   ```bash
-   npm login  # if not logged in
-   npm publish --access public
-   ```
+Feel free to adjust the styling to fit your application's design.
+
+## Contributors
+
+- [Your Name]
+- [Another Contributor]
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Special thanks to the contributors who made this library possible.
-- Inspired by the need for easy integration with Optimism protocol.
+This library is licensed under the [MIT License](LICENSE).
