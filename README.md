@@ -88,8 +88,8 @@ Feel free to adjust the styling to fit your application's design.
 
 ## Contributors
 
-- [Your Name]
-- [Another Contributor]
+- @mustafaazad03
+- Backend Developer
 
 ## License
 
