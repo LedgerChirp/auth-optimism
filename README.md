@@ -1,4 +1,4 @@
-# My Auth Library
+# Optimism Auth Library
 
 ## Overview
 
