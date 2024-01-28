@@ -13,13 +13,15 @@ export default function Modal3() {
 			</button>
 			{showModal ? (
 				<>
-					<div className="justify-center p-2 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+					<div className="justify-center p-2 items-center flex overflow-x-hidden h-fit overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
 						<div className="relative w-auto my-6 mx-auto max-w-3xl">
 							{/*content*/}
 							<div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 								{/*header*/}
-								<div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-									<h3 className="text-3xl font-semibold">Optify-Send</h3>
+								<div className="flex items-start justify-between p-5 m-2 border-b border-solid border-blueGray-200 rounded-t">
+									<h3 className="text-3xl font-semibold">
+										PaymentContract - Optimism Token Transfer
+									</h3>
 									<button
 										className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
 										onClick={() => setShowModal(false)}
@@ -30,7 +32,7 @@ export default function Modal3() {
 									</button>
 								</div>
 								{/*body*/}
-								<div className="px-4 sm:px-0">
+								<div className="px-4 sm:px-0 m-2">
 									<h3 className="text-base font-semibold leading-7 text-gray-900">
 										Npm Commands
 									</h3>
@@ -38,38 +40,56 @@ export default function Modal3() {
 										npm i optify-send
 									</code>
 								</div>
-								<div className="mt-6 border-t border-gray-100">
+								<div className="mt-6 border-t border-gray-100 h-[50vh] overflow-y-scroll">
 									<dl className="divide-y divide-gray-100">
 										<div className="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
 											<dt className="text-sm font-medium leading-6 text-gray-900">
-												library name
+												Steps: Check Your Balance:
 											</dt>
 											<dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-												Optify Auth SDK
+												- Use the `getBalance` function to check the balance of
+												Optimism tokens for the calling address. ```solidity //
+												Example: Check balance const balance = await
+												contract.getBalance(); console.log("Your balance: ",
+												balance.toString()); ```
 											</dd>
 										</div>
 										<div className="bg-white px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
 											<dt className="text-sm font-medium leading-6 text-gray-900">
-												Application for
+												Send Payment:
 											</dt>
 											<dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-												Backend Developer
+												- To send Optimism tokens to another address, call the
+												`sendPayment` function with the recipient's address and
+												the amount. ```solidity // Example: Send 0.5 ETH to
+												another address const recipient = "0xRecipientAddress";
+												const amount = ethers.utils.parseEther("0.5"); await
+												contract.sendPayment(recipient, amount); ```
 											</dd>
 										</div>
 										<div className="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
 											<dt className="text-sm font-medium leading-6 text-gray-900">
-												Email address
+												Check Transaction History Length:
 											</dt>
 											<dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-												margotfoster@example.com
+												- Use the `transactionHistoryLength` function to get the
+												total number of transactions made from the contract.
+												```solidity // Example: Check transaction history length
+												const transactions = await
+												contract.transactionHistoryLength(); console.log("Total
+												transactions: ", transactions.toString()); ```
 											</dd>
 										</div>
 										<div className="bg-white px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
 											<dt className="text-sm font-medium leading-6 text-gray-900">
-												Salary expectation
+												Environment Variables
 											</dt>
 											<dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-												$120,000
+												Make sure to set the following environment variables
+												before deploying the contract: - `PRIVATE_KEY`: Private
+												key of the account deploying the contract. -
+												`L2_NODE_URL`: Optimism Layer 2 node URL (e.g.,
+												`https://sepolia.optimism.io/`).
 											</dd>
 										</div>
 										<div className="bg-gray-50 px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-3">
